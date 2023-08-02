@@ -35,8 +35,10 @@ def create_app(test_config=None):
     migrate.init_app(app, db)
 
     # 引入蓝图
-    from web import alert
-    app.register_blueprint(alert.bp)
+    # from web.routes import alert
+    # app.register_blueprint(alert.bp)
+    from . import routes
+    routes.init_app(app)
 
     # 引入models
 
