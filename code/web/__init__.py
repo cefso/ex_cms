@@ -21,7 +21,7 @@ def create_app(test_config=None):
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py', silent=True)
     else:
-        # load the test config if passed in
+        # load the health config if passed in
         app.config.from_mapping(test_config)
 
     # ensure the instance folder exists
@@ -34,12 +34,8 @@ def create_app(test_config=None):
     db.init_app(app)
     migrate.init_app(app, db)
 
-    # 引入蓝图
-    # from web.routes import alert
-    # app.register_blueprint(alert.bp)
-    from . import routes
-    routes.init_app(app)
-
-    # 引入models
+    from . import alert, health
+    alert.init_app(app)
+    health.init_app(app)
 
     return app
