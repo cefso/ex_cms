@@ -1,10 +1,13 @@
-from web import create_app
+from web import create_app, siwa
 
 app = create_app()
+
+
 # celery_app = app.extensions['celery']
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
+@siwa.doc()
 def hello_world():  # put application's code here
     return 'Hello World!'
 

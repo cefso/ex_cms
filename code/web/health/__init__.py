@@ -1,3 +1,5 @@
+
+
 # 创建flask app
 def init_app(app):
     # 引入蓝图

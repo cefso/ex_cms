@@ -3,17 +3,22 @@ import os
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_siwadoc import SiwaDoc
 
 from web.config import config
 
 db = SQLAlchemy()
 migrate = Migrate()
+siwa = SiwaDoc(title="siwadocapi", description="一个自动生成openapi文档的库")
 
 
 # 创建flask app
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+
+    # siwa
+    siwa.init_app(app)
 
     # 引入配置文件
     app.config.from_object(config['development'])
