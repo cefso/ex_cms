@@ -2,14 +2,14 @@ import os
 
 from flask import Flask
 from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
 from flask_siwadoc import SiwaDoc
+from flask_sqlalchemy import SQLAlchemy
 
 from web.config import config
 
 db = SQLAlchemy()
 migrate = Migrate()
-siwa = SiwaDoc(title="siwadocapi", description="一个自动生成openapi文档的库")
+siwa = SiwaDoc(title="ex_cms", description="ex cms 的 api 文档")
 
 
 # 创建flask app
@@ -38,6 +38,10 @@ def create_app(test_config=None):
     # 数据库相关初始化
     db.init_app(app)
     migrate.init_app(app, db)
+
+    # 创建表
+    with app.app_context():
+        db.create_all()
 
     from . import alert, health
     alert.init_app(app)
