@@ -7,7 +7,7 @@
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/my-layer-code/alembic/templates" />
+        <option value="$MODULE_DIR$/my-layer-code/python/alembic/templates" />
       </list>
     </option>
   </component>
