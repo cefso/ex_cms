@@ -1,7 +1,38 @@
 from web import db
+from pydantic import BaseModel
 
 
-class AliyunAlert(db.Model):
+class AliyunAlert(BaseModel):
+    id: int
+    lastTime: str
+    rawMetricName: str
+    expression: str
+    metricName: str
+    instanceName: str
+    signature: str
+    transId: str
+    groupId: str
+    regionName: str
+    productGroupName: str
+    metricProject: str
+    userId: str
+    curValue: str
+    unit: str
+    alertName: str
+    regionId: str
+    namespace: str
+    triggerLevel: str
+    alertState: str
+    preTriggerLevel: str
+    ruleId: str
+    dimensions: str
+    timestamp: str
+
+    class Config:
+        orm_mode = True
+
+
+class AliyunAlertModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     lastTime = db.Column(db.String(255))
     rawMetricName = db.Column(db.String(255))

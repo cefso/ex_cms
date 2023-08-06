@@ -5,6 +5,6 @@ def init_app(app):
     app.register_blueprint(alert.bp)
 
     # 引入models
-    from models import AliyunAlert
+    from .models import AliyunAlertModel
 
     return app
