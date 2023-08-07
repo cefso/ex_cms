@@ -16,7 +16,16 @@ class DevelopmentConfig(BaseConfig):
     SCHEDULER_API_ENABLED = True
 
 
+class ProductionConfig(BaseConfig):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = '***REMOVED***'
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SCHEDULER_API_ENABLED = True
+
+
 config = {
     'default': DevelopmentConfig,
     'development': DevelopmentConfig,
+    'production': ProductionConfig,
 }
