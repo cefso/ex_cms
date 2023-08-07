@@ -3,7 +3,6 @@ from pydantic import BaseModel
 
 
 class AliyunAlert(BaseModel):
-    id: int
     lastTime: str
     rawMetricName: str
     expression: str
