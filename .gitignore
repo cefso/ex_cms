@@ -169,3 +169,4 @@ cython_debug/
 # fc layer
 my-layer-code
 
+/.s/
