@@ -169,4 +169,5 @@ cython_debug/
 # fc layer
 my-layer-code
 
+/code/migrations/
 /.s/
