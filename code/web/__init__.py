@@ -21,7 +21,8 @@ def create_app(test_config=None):
     siwa.init_app(app)
 
     # 引入配置文件
-    app.config.from_object(config['development'])
+    env = os.getenv('FLASK_ENV')
+    app.config.from_object(config[env])
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py', silent=True)
