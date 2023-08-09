@@ -8,7 +8,7 @@ bp = Blueprint('outgoing', __name__, url_prefix='/outgoing')
 
 
 @bp.route('outgoing', methods=['POST'])
-@siwa.doc(header=SignHeaderSchema, body=OutGoingSchema, tags=["outgoing"])
+# @siwa.doc(header=SignHeaderSchema, body=OutGoingSchema, tags=["outgoing"])
 # def get_msg(body: OutGoingSchema):
 def get_msg():
     headers = request.headers
