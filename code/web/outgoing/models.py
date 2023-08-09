@@ -1,8 +1,17 @@
 from pydantic import BaseModel
 
 
+class Content(BaseModel):
+    content: str = None
+
+
+class AtUsers(BaseModel):
+    dingtalkId: str = None
+    staffId: str = None
+
+
 class OutGoingSchema(BaseModel):
-    atUsers: list
+    atUsers: list = None
     chatbotCorpId: str = None
     chatbotUserId: str
     conversationId: str
@@ -19,8 +28,4 @@ class OutGoingSchema(BaseModel):
     senderStaffId: str = None
     sessionWebhook: str
     sessionWebhookExpiredTime: int
-    text: dict
-
-# class SignHeaderSchema(BaseModel):
-#     timestamp: str
-#     sign: str
+    text: Content = None
