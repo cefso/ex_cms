@@ -22,6 +22,6 @@ class OutGoingSchema(BaseModel):
     text: str
 
 
-class SignHeaderSchema(BaseModel):
-    timestamp: str
-    sign: str
+# class SignHeaderSchema(BaseModel):
+#     timestamp: str
+#     sign: str
