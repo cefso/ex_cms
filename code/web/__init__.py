@@ -44,9 +44,10 @@ def create_app(test_config=None):
     with app.app_context():
         db.create_all()
 
-    from . import alert, health, outgoing
+    from . import alert, health, outgoing, user
     alert.init_app(app)
     health.init_app(app)
     outgoing.init_app(app)
+    user.init_app(app)
 
     return app

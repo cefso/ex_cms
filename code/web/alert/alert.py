@@ -1,4 +1,5 @@
 from flask import Blueprint, request, current_app
+
 from web import siwa, db
 from .models import AliyunAlertSchema, AliyunAlert
 
@@ -12,5 +13,6 @@ def get_alert(form: AliyunAlertSchema):
     data = AliyunAlert(**form.dict())
     current_app.logger.debug('请求的headers: {}'.format(headers))
     db.session.add(data)
+    db.session.commit()
     current_app.logger.debug('接收到的内容: {}，插入到数据库'.format(data.__dict__))
     return {"message": "success"}
