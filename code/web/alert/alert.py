@@ -12,5 +12,5 @@ def get_alert(form: AliyunAlertSchema):
     data = AliyunAlert(**form.dict())
     current_app.logger.debug('请求的headers: {}'.format(headers))
     db.session.add(data)
-    current_app.logger.info('接收到的内容: {}，插入到数据库'.format(data.__dict__))
+    current_app.logger.debug('接收到的内容: {}，插入到数据库'.format(data.__dict__))
     return {"message": "success"}
