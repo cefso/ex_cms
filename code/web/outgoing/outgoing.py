@@ -11,6 +11,7 @@ bp = Blueprint('outgoing', __name__, url_prefix='/outgoing')
 @siwa.doc(body=OutGoingSchema, tags=["outgoing"])
 def get_msg(body: OutGoingSchema):
     headers = request.headers
+    body = request.json
     current_app.logger.debug('请求的headers: {}'.format(headers))
     current_app.logger.debug('请求的body: {}'.format(body))
     header_sign = request.headers.get('sign')
