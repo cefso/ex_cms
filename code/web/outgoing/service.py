@@ -25,7 +25,7 @@ def check_content(content):
             "msgtype": "markdown",
             "markdown": {
                 "title": "功能列表",
-                "text": "1.告警列表 \n 2.屏蔽告警列表 \n 3. 用户列表 \n"
+                "text": "1. 告警列表 2. 屏蔽告警列表 3. 用户列表"
             },
         }
     else:
