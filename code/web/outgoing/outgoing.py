@@ -8,9 +8,9 @@ bp = Blueprint('outgoing', __name__, url_prefix='/outgoing')
 
 
 @bp.route('outgoing', methods=['POST'])
-# @siwa.doc(body=OutGoingSchema, tags=["outgoing"])
-# def get_msg(body: OutGoingSchema):
-def get_msg():
+@siwa.doc(body=OutGoingSchema, tags=["outgoing"])
+def get_msg(body: OutGoingSchema):
+# def get_msg():
     headers = request.headers
     body = request.get_data()
     current_app.logger.debug('请求的headers: {}'.format(headers))
