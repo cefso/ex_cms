@@ -12,6 +12,7 @@ bp = Blueprint('outgoing', __name__, url_prefix='/outgoing')
 def get_msg(body: OutGoingSchema):
     headers = request.headers
     current_app.logger.debug('请求的headers: {}'.format(headers))
+    current_app.logger.debug('请求的body: {}'.format(body))
     header_sign = request.headers.get('sign')
     check_sign = get_sign(request.headers.get('timestamp'))
     if header_sign != check_sign:
