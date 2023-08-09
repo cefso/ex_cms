@@ -13,14 +13,13 @@ class OutGoingSchema(BaseModel):
     isInAtList: bool = None
     msgId: str
     msgtype: str
-    senderCorpId: str
-    senderId: str = None
+    senderCorpId: str = None
+    senderId: str
     senderNick: str
     senderStaffId: str = None
     sessionWebhook: str
     sessionWebhookExpiredTime: int
-    text: str
-
+    text: dict
 
 # class SignHeaderSchema(BaseModel):
 #     timestamp: str
