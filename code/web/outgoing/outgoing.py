@@ -18,6 +18,16 @@ def get_msg(body: OutGoingSchema):
     header_sign = request.headers.get('sign')
     check_sign = get_sign(request.headers.get('timestamp'))
     if header_sign != check_sign:
-        return {"message": "sign check error"}
+        return {
+            "msgtype": "text",
+            "text": {
+                "content": "签名错误，请联系开发者"
+            }
+        }
     else:
-        return {"message": "success"}
+        return {
+            "msgtype": "text",
+            "text": {
+                "content": "回调测试"
+            }
+        }
