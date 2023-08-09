@@ -14,6 +14,7 @@ def get_msg(body: OutGoingSchema):
     body = body.dict()
     current_app.logger.debug('请求的headers: {}'.format(headers))
     current_app.logger.debug('请求的body: {}'.format(body))
+    # 校验签名
     header_sign = request.headers.get('sign')
     check_sign = get_sign(request.headers.get('timestamp'))
     if header_sign != check_sign:
