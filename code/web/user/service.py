@@ -3,9 +3,11 @@ from .models import User
 
 
 # 获取用户列表orm
-def get_user_list():
-    users = db.session.execute(db.select(User)).scalars().all()
+def get_user_list(page=1, page_size=1):
+    user_pagination = db.paginate(db.select(User), page=page, per_page=page_size, max_per_page=100, error_out=False)
     user_list = []
-    for user in users:
+    for user in user_pagination.items:
         user_list.append(user.to_json())
-    return user_list
+    print(user_list)
+    return {'page': user_pagination.page, 'page_size': user_pagination.per_page, 'total': user_pagination.total,
+            'users': user_list}
