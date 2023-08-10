@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel
 
 from web import db
@@ -8,6 +10,13 @@ class User(db.Model):
     userId = db.Column(db.String(255), unique=True)
     userName = db.Column(db.String(255))
 
+    def to_json(self):
+        dict = self.__dict__
+        if "_sa_instance_state" in dict:
+            del dict["_sa_instance_state"]
+            del dict["id"]
+            return dict
+
 
 class UserSchema(BaseModel):
     userId: str
@@ -15,3 +24,11 @@ class UserSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class UsersSchema(BaseModel):
+    page: int
+    users: List[UserSchema]
+
+    class Config:
+        orm_mode = False

@@ -1,9 +1,9 @@
+
 from flask import Blueprint, request, current_app
 
 from web import siwa, db
-from .models import UserSchema, User
-
-# from .service import get_sign, check_content
+from .models import UserSchema, User, UsersSchema
+from .service import get_user_list
 
 bp = Blueprint('user', __name__, url_prefix='/user')
 
@@ -22,3 +22,17 @@ def add_user(form: UserSchema):
         return {"message": "添加用户: {}({})".format(user_id, user_name)}
     else:
         return {"message": "用户已存在: {}({})".format(user_id, user_name)}
+
+
+@bp.route('/list', methods=['GET'])
+@siwa.doc(resp=UsersSchema, tags=["user"])
+def list_user():
+    user_list = get_user_list()
+    return user_list
+    # 判断用户是否存在，存在则报错，不存在则新增
+    # if db.session.execute(db.select(User).filter_by(userId=user_id)).scalar() is None:
+    #     db.session.add(User(**form.dict()))
+    #     db.session.commit()
+    #     return {"message": "添加用户: {}({})".format(user_id, user_name)}
+    # else:
+    #     return {"message": "用户已存在: {}({})".format(user_id, user_name)}
