@@ -1,5 +1,9 @@
-from web import db
+from typing import List
+
 from pydantic import BaseModel
+
+from web import db
+from web.common.schema import PageSchema
 
 
 class AliyunAlert(db.Model):
@@ -27,6 +31,13 @@ class AliyunAlert(db.Model):
     ruleId = db.Column(db.String(255))
     dimensions = db.Column(db.String(255))
     timestamp = db.Column(db.String(255))
+
+    def to_json(self):
+        dict = self.__dict__
+        if "_sa_instance_state" in dict:
+            del dict["_sa_instance_state"]
+            del dict["id"]
+            return dict
 
 
 class AliyunAlertSchema(BaseModel):
@@ -56,3 +67,10 @@ class AliyunAlertSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class AlertsSchema(PageSchema):
+    alerts: List[AliyunAlertSchema]
+
+    class Config:
+        orm_mode = False

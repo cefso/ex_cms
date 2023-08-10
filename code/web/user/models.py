@@ -1,8 +1,9 @@
 from typing import List
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from web import db
+from web.common.schema import PageSchema
 
 
 class User(db.Model):
@@ -26,16 +27,9 @@ class UserSchema(BaseModel):
         orm_mode = True
 
 
-class UsersSchema(BaseModel):
-    page: int
-    page_size: int
-    total: int
+class UsersSchema(PageSchema):
     users: List[UserSchema]
 
     class Config:
         orm_mode = False
 
-
-class QuerySchema(BaseModel):
-    page: int = Field(default=1, title="current page number")
-    size: int = Field(default=10, title="size of page", ge=10, le=100)

@@ -2,7 +2,8 @@
 from flask import Blueprint, request, current_app
 
 from web import siwa, db
-from .models import UserSchema, User, UsersSchema, QuerySchema
+from web.common.schema import QuerySchema
+from .models import UserSchema, User, UsersSchema
 from .service import get_user_list
 
 bp = Blueprint('user', __name__, url_prefix='/user')
