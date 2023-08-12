@@ -23,7 +23,7 @@ def markdown_user_list():
     mk_user_list = ''
     index = 1
     for user in user_list:
-        mk_user = '{}{}({})\n\n'.format(index, user['userName'], user['userId'])
+        mk_user = '{}. {}({})\n\n'.format(index, user['userName'], user['userId'])
         mk_user_list = mk_user_list + mk_user
         index = index + 1
     mk_user_list = mk_user_list + '> page:{}  page_size:{}  total:{}'.format(user_pagination.page,
