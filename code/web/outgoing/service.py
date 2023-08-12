@@ -21,10 +21,12 @@ def get_sign(timestamp):
 def markdown_user_list():
     user_pagination, user_list = get_user_list()
     mk_user_list = ''
+    index = 1
     for user in user_list:
-        mk_user = '{}({})\n '.format(user['userName'], user['userId'])
+        mk_user = '{}{}({})\n\n'.format(index, user['userName'], user['userId'])
         mk_user_list = mk_user_list + mk_user
-    mk_user_list = mk_user_list + 'page:{}\n page_size:{}\n total:{}\n'.format(user_pagination.page,
+        index = index + 1
+    mk_user_list = mk_user_list + '> page:{}  page_size:{}  total:{}'.format(user_pagination.page,
                                                                                user_pagination.per_page,
                                                                                user_pagination.total)
     return mk_user_list
@@ -39,7 +41,7 @@ def check_content(content):
                 "msgtype": "markdown",
                 "markdown": {
                     "title": "功能列表",
-                    "text": "1. 告警列表\n 2. 屏蔽告警列表\n 3. 用户列表\n "
+                    "text": "1. 告警列表\n\n2. 屏蔽告警列表\n\n3. 用户列表\n\n"
                 },
             }
         case '1':
@@ -47,7 +49,7 @@ def check_content(content):
                 "msgtype": "markdown",
                 "markdown": {
                     "title": "告警列表",
-                    "text": "1. 告警列表\n 2. 屏蔽告警列表\n 3. 用户列表\n "
+                    "text": "1. 告警列表\n\n2. 屏蔽告警列表\n\n3. 用户列表\n\n"
                 },
             }
         case '2':
@@ -55,7 +57,7 @@ def check_content(content):
                 "msgtype": "markdown",
                 "markdown": {
                     "title": "屏蔽告警列表",
-                    "text": "1. 告警列表\n 2. 屏蔽告警列表\n 3. 用户列表\n "
+                    "text": "1.告警列表\n\n2.屏蔽告警列表\n\n3.用户列表\n\n"
                 },
             }
         case '3':
