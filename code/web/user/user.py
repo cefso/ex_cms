@@ -28,5 +28,6 @@ def add_user(form: UserSchema):
 @bp.route('/list', methods=['GET'])
 @siwa.doc(query=QuerySchema, resp=UsersSchema, tags=["user"])
 def list_user(query: QuerySchema):
-    user_list = get_user_list(page=query.page, page_size=query.size)
-    return user_list
+    user_pagination, user_list = get_user_list(page=query.page, page_size=query.size)
+    return {'page': user_pagination.page, 'page_size': user_pagination.per_page, 'total': user_pagination.total,
+            'users': user_list}

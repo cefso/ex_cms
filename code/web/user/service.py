@@ -8,5 +8,4 @@ def get_user_list(page=1, page_size=1):
     user_list = []
     for user in user_pagination.items:
         user_list.append(user.to_json())
-    return {'page': user_pagination.page, 'page_size': user_pagination.per_page, 'total': user_pagination.total,
-            'users': user_list}
+    return user_list

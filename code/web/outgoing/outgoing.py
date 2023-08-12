@@ -16,6 +16,9 @@ def get_msg(body: OutGoingSchema):
     # 校验签名
     header_sign = request.headers.get('sign')
     check_sign = get_sign(request.headers.get('timestamp'))
+    if current_app.config.get('FLASK_ENV') == 'development':
+        content = body.text.content
+        return check_content(content)
     if header_sign != check_sign:
         return {
             "msgtype": "text",
@@ -25,11 +28,4 @@ def get_msg(body: OutGoingSchema):
         }
     else:
         content = body.text.content
-        print(body.text.content)
         return check_content(content)
-        # {
-        #     "msgtype": "text",
-        #     "text": {
-        #         "content": "回调测试"
-        #     }
-        # }

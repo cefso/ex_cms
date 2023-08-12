@@ -1,9 +1,10 @@
-# python 3.8
 import base64
 import hashlib
 import hmac
 
 from flask import current_app
+
+from web.user.service import get_user_list
 
 
 # 获取签名值
@@ -17,21 +18,56 @@ def get_sign(timestamp):
     return sign
 
 
+def markdown_user_list():
+    user_list = get_user_list()
+    mk_user_list = ''
+    for user in user_list:
+        mk_user = user['userName'] + '(' + user['userId'] + ')' + '\n' + ' '
+        mk_user_list = mk_user_list + mk_user
+    return mk_user_list
+
+
 def check_content(content):
     # 删除多余空格, 避免对后续判断造成影响
     content = content.strip()
-    if content in '功能列表' or content in '帮助':
-        return {
-            "msgtype": "markdown",
-            "markdown": {
-                "title": "功能列表",
-                "text": "1. 告警列表\n 2. 屏蔽告警列表\n 3. 用户列表\n "
-            },
-        }
-    else:
-        return {
-            "msgtype": "text",
-            "text": {
-                "content": "暂时不能理解你的请求，请@我并输入'帮助'获取功能列表"
+    match content:
+        case content if content in '功能列表':
+            return {
+                "msgtype": "markdown",
+                "markdown": {
+                    "title": "功能列表",
+                    "text": "1. 告警列表\n 2. 屏蔽告警列表\n 3. 用户列表\n "
+                },
             }
-        }
+        case '1':
+            return {
+                "msgtype": "markdown",
+                "markdown": {
+                    "title": "告警列表",
+                    "text": "1. 告警列表\n 2. 屏蔽告警列表\n 3. 用户列表\n "
+                },
+            }
+        case '2':
+            return {
+                "msgtype": "markdown",
+                "markdown": {
+                    "title": "屏蔽告警列表",
+                    "text": "1. 告警列表\n 2. 屏蔽告警列表\n 3. 用户列表\n "
+                },
+            }
+        case '3':
+            return {
+                "msgtype": "markdown",
+                "markdown": {
+                    "title": "用户列表",
+                    "text": markdown_user_list()
+                },
+            }
+        case _:
+            return {
+                "msgtype": "text",
+                "text": {
+                    "title": "功能列表",
+                    "content": "暂时不能理解你的请求，请@我并输入'帮助'获取功能列表"
+                }
+            }

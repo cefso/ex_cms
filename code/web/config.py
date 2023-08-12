@@ -6,6 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class BaseConfig:  # 基本配置类
     SECRET_KEY = os.getenv('SECRET_KEY', 'some secret words')
     ROBOT_APP_SECRET = os.getenv('ROBOT_APP_SECRET')
+    FLASK_ENV = os.getenv('FLASK_ENV')
     ITEMS_PER_PAGE = 10
 
 
