@@ -19,11 +19,14 @@ def get_sign(timestamp):
 
 
 def markdown_user_list():
-    user_list = get_user_list()
+    user_pagination, user_list = get_user_list()
     mk_user_list = ''
     for user in user_list:
-        mk_user = user['userName'] + '(' + user['userId'] + ')' + '\n' + ' '
+        mk_user = '{}({})\n '.format(user['userName'], user['userId'])
         mk_user_list = mk_user_list + mk_user
+    mk_user_list = mk_user_list + 'page:{}\n page_size:{}\n total:{}\n'.format(user_pagination.page,
+                                                                               user_pagination.per_page,
+                                                                               user_pagination.total)
     return mk_user_list
 
 
