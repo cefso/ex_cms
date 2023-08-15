@@ -1,7 +1,7 @@
 from flask import Blueprint, request, current_app
 
-from web import siwa, db
-from web.common.schema import QuerySchema
+from code.web import siwa, db
+from code.web.common.schema import QuerySchema
 from .models import AliyunAlertSchema, AliyunAlert, AlertsSchema
 from .service import get_alert_list
 

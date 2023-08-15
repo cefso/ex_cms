@@ -1,6 +1,6 @@
 from flask import Blueprint, request, current_app
 
-from web import siwa
+from code.web import siwa
 from .models import OutGoingSchema
 from .service import get_sign, check_content
 

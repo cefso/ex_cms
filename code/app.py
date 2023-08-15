@@ -1,4 +1,4 @@
-from web import create_app, siwa
+from code.web import create_app, siwa
 
 app = create_app()
 

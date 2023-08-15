@@ -1,4 +1,4 @@
-from web import db
+from code.web import db
 from .models import User
 
 

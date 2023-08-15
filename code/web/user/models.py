@@ -2,8 +2,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from web import db
-from web.common.schema import PageSchema
+from code.web import db
+from code.web.common.schema import PageSchema
 
 
 class User(db.Model):

@@ -4,7 +4,7 @@ import hmac
 
 from flask import current_app
 
-from web.user.service import get_user_list
+from code.web.user.service import get_user_list
 
 
 # 获取签名值
