@@ -1,4 +1,4 @@
-from code.web import db
+from web import db
 from .models import AliyunAlert
 
 

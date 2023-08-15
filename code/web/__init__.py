@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_siwadoc import SiwaDoc
 from flask_sqlalchemy import SQLAlchemy
 
-from code.web.config import config
+from web.config import config
 
 db = SQLAlchemy()
 migrate = Migrate()
