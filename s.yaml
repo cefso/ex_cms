@@ -5,7 +5,7 @@ access: "cefso"
 vars: # 全局变量
   region: "ap-southeast-1"
   service:
-    name: "ex_cms"
+    name: "ex_cms-github"
     description: 'Serverless Devs Web Framework Service'
 #    logConfig: # log配置，function产生的log会写入这里配置的logstore
 #      project: aliyun-fc-ap-southeast-1-6d80325d-3441-59fa-8a0f-80c806010d4e # loghub中的project名称
