@@ -29,6 +29,10 @@ services:
         description: 'Serverless Devs Web Framework Function'
         codeUri: './code'
         runtime: python3.10
+        environmentVariables:
+          FLASK_ENV: ${env(FLASK_ENV)}
+          ROBOT_APP_SECRET: ${env(ROBOT_APP_SECRET)}
+          SQLALCHEMY_DATABASE_URI: ${env(SQLALCHEMY_DATABASE_URI)}
         handler: app.app
         memorySize: 256
         timeout: 60
