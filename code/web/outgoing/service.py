@@ -5,6 +5,7 @@ import hmac
 from flask import current_app
 
 from web.user.service import get_user_list
+from web.alert.service import get_alert_list
 
 
 # 获取签名值
@@ -33,6 +34,13 @@ def markdown_user_list():
     return mk_user_list
 
 
+# 返回告警列表
+def markdown_alert_list():
+    user_pagination, alert_list = get_alert_list()
+    print(user_pagination)
+    print(alert_list)
+
+
 def check_content(content):
     # 删除多余空格, 避免对后续判断造成影响
     content = content.strip()
@@ -50,7 +58,7 @@ def check_content(content):
                 "msgtype": "markdown",
                 "markdown": {
                     "title": "告警列表",
-                    "text": "1. 告警列表\n\n2. 屏蔽告警列表\n\n3. 用户列表\n\n"
+                    "text": markdown_alert_list()
                 },
             }
         case '2':
