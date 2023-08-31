@@ -18,6 +18,7 @@ def get_sign(timestamp):
     return sign
 
 
+# 返回用户列表
 def markdown_user_list():
     user_pagination, user_list = get_user_list()
     mk_user_list = ''
@@ -27,8 +28,8 @@ def markdown_user_list():
         mk_user_list = mk_user_list + mk_user
         index = index + 1
     mk_user_list = mk_user_list + '> page:{}  page_size:{}  total:{}'.format(user_pagination.page,
-                                                                               user_pagination.per_page,
-                                                                               user_pagination.total)
+                                                                             user_pagination.per_page,
+                                                                             user_pagination.total)
     return mk_user_list
 
 
