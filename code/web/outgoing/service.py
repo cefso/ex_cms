@@ -4,8 +4,8 @@ import hmac
 
 from flask import current_app
 
-from web.user.service import get_user_list
 from web.alert.service import get_alert_list
+from web.user.service import get_user_list
 
 
 # 获取签名值
@@ -36,9 +36,18 @@ def markdown_user_list():
 
 # 返回告警列表
 def markdown_alert_list():
-    user_pagination, alert_list = get_alert_list()
-    print(user_pagination)
-    print(alert_list)
+    alert_pagination, alert_list = get_alert_list()
+    mk_alert_list = ''
+    index = 1
+    for alert in alert_list:
+        mk_alert = '{}. {}({}), {} {},{}\n\n'.format(index, alert['alertName'], alert['ruleId'], alert['instanceName'],
+                                                     alert['curValue'] + alert['unit'], alert['lastTime'])
+        mk_alert_list = mk_alert_list + mk_alert
+        index = index + 1
+    mk_alert_list = mk_alert_list + '> page:{}  page_size:{}  total:{}'.format(alert_pagination.page,
+                                                                               alert_pagination.per_page,
+                                                                               alert_pagination.total)
+    return mk_alert_list
 
 
 def check_content(content):
