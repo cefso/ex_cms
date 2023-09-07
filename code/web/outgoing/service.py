@@ -47,6 +47,9 @@ def markdown_alert_list():
     mk_alert_list = ''
     index = 1
     for alert in alert_list:
+        # p判断unit为None，则用’ ‘填充
+        if alert['unit'] is None:
+            alert['unit'] = ' '
         mk_alert = '{}. {}({}), {} {},{}\n\n'.format(index, alert['alertName'], alert['ruleId'], alert['instanceName'],
                                                      alert['curValue'] + alert['unit'], alert['lastTime'])
         mk_alert_list = mk_alert_list + mk_alert
