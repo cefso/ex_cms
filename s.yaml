@@ -7,12 +7,12 @@ vars: # 全局变量
   service:
     name: "ex_cms-github"
     description: 'Serverless Devs Web Framework Service'
-#    logConfig: # log配置，function产生的log会写入这里配置的logstore
-#      project: aliyun-fc-ap-southeast-1-6d80325d-3441-59fa-8a0f-80c806010d4e # loghub中的project名称
-#      logstore: function-log # loghub中的logstore名称
-#      enableRequestMetrics: true # RequestMetrics开关，取值true/false
-#      enableInstanceMetrics: true # InstanceMetrics开关，取值true/false
-#      logBeginRule: DefaultRegex # 日志是否切分，取值 DefaultRegex/None
+    logConfig: # log配置，function产生的log会写入这里配置的logstore
+      project: aliyun-fc-ap-southeast-1-6d80325d-3441-59fa-8a0f-80c806010d4e # loghub中的project名称
+      logstore: function-log # loghub中的logstore名称
+      enableRequestMetrics: true # RequestMetrics开关，取值true/false
+      enableInstanceMetrics: true # InstanceMetrics开关，取值true/false
+      logBeginRule: DefaultRegex # 日志是否切分，取值 DefaultRegex/None
 
 services:
   framework: # 业务名称/模块名称
