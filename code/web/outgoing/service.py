@@ -10,12 +10,19 @@ from web.user.service import get_user_list
 
 # 获取签名值
 def get_sign(timestamp):
+    # 获取应用的密钥
     app_secret = current_app.config.get('ROBOT_APP_SECRET')
+    # 将密钥编码为 utf-8 格式
     app_secret_enc = app_secret.encode('utf-8')
+    # 生成请求参数字符串，包括时间戳和应用密钥
     string_to_sign = '{}\n{}'.format(timestamp, app_secret)
+    # 将请求参数字符串编码为 utf-8 格式
     string_to_sign_enc = string_to_sign.encode('utf-8')
+    # 使用哈希算法和密钥计算签名
     hmac_code = hmac.new(app_secret_enc, string_to_sign_enc, digestmod=hashlib.sha256).digest()
+    # 将哈希结果编码为 base64 格式，并解码为字符串
     sign = base64.b64encode(hmac_code).decode('utf-8')
+    # 返回签名
     return sign
 
 
