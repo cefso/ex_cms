@@ -17,7 +17,6 @@ def get_alert_list(page=1, page_size=10):
 
     alert_pagination = db.paginate(db.select(AliyunAlert).where(~subquery, AliyunAlert.alertState != 'OK'), page=page,
                                    per_page=page_size, max_per_page=100, error_out=False)
-    # TODO: 需要对数据进行进一步处理
     alert_list = []
     for alert in alert_pagination.items:
         alert_list.append(alert.to_json())
