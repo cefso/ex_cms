@@ -37,7 +37,7 @@ services:
         memorySize: 256
         timeout: 60
         layers:
-          - acs:fc:ap-southeast-1:1010965047472573:layers/flask/versions/5
+          - acs:fc:ap-southeast-1:1010965047472573:layers/flask/versions/6
       triggers:
         - name: httpTrigger
           type: http
