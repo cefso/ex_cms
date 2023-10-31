@@ -64,7 +64,7 @@ def check_content(content):
     # 删除多余空格, 避免对后续判断造成影响
     content = content.strip()
     match content:
-        case content if content in '功能列表':
+        case content if content in ['功能列表', '帮助']:
             return {
                 "msgtype": "markdown",
                 "markdown": {
