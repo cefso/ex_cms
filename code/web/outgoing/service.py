@@ -62,9 +62,9 @@ def markdown_alert_list():
 
 def check_content(content):
     # 删除多余空格, 避免对后续判断造成影响
-    content = content.strip()
+    content = content.split()
     match content:
-        case '功能列表' | '帮助':
+        case ['功能列表'] | ['帮助']:
             return {
                 "msgtype": "markdown",
                 "markdown": {
@@ -72,7 +72,7 @@ def check_content(content):
                     "text": "1. 告警列表\n\n2. 屏蔽告警列表\n\n3. 用户列表\n\n"
                 },
             }
-        case '1':
+        case ['1']:
             return {
                 "msgtype": "markdown",
                 "markdown": {
@@ -80,7 +80,7 @@ def check_content(content):
                     "text": markdown_alert_list()
                 },
             }
-        case '2':
+        case ['2']:
             return {
                 "msgtype": "markdown",
                 "markdown": {
@@ -88,7 +88,7 @@ def check_content(content):
                     "text": "1.告警列表\n\n2.屏蔽告警列表\n\n3.用户列表\n\n"
                 },
             }
-        case '3':
+        case ['3']:
             return {
                 "msgtype": "markdown",
                 "markdown": {
