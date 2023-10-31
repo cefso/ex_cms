@@ -42,8 +42,12 @@ def markdown_user_list():
 
 
 # 返回告警列表
-def markdown_alert_list():
-    alert_pagination, alert_list = get_alert_list()
+def markdown_alert_list(user_name=None):
+    # 判断是否是查询特定用户告警
+    if user_name is None:
+        alert_pagination, alert_list = get_alert_list()
+    else:
+        alert_pagination, alert_list = get_alert_list(user_name)
     mk_alert_list = ''
     index = 1
     for alert in alert_list:
@@ -69,7 +73,7 @@ def check_content(content):
                 "msgtype": "markdown",
                 "markdown": {
                     "title": "功能列表",
-                    "text": "1. 告警列表\n\n2. 屏蔽告警列表\n\n3. 用户列表\n\n"
+                    "text": "1. 告警列表(1 用户名，可获取指定用户的告警列表)\n\n2. 屏蔽告警列表\n\n3. 用户列表\n\n"
                 },
             }
         case ['1']:
@@ -80,12 +84,20 @@ def check_content(content):
                     "text": markdown_alert_list()
                 },
             }
+        case ['1', user_name]:
+            return {
+                "msgtype": "markdown",
+                "markdown": {
+                    "title": "告警列表",
+                    "text": markdown_alert_list(user_name)
+                },
+            }
         case ['2']:
             return {
                 "msgtype": "markdown",
                 "markdown": {
                     "title": "屏蔽告警列表",
-                    "text": "1.告警列表\n\n2.屏蔽告警列表\n\n3.用户列表\n\n"
+                    "text": "1. 告警列表(1 用户名，可获取指定用户的告警列表)\n\n2. 屏蔽告警列表\n\n3. 用户列表\n\n"
                 },
             }
         case ['3']:
