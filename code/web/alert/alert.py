@@ -22,7 +22,6 @@ def post_alert(form: AliyunAlertSchema):
 @bp.route('/slack', methods=['POST'])
 def slack_post():
     print(request.headers)
-    print(request.body)
     print(request.json)
     return {"message": "success"}
 
