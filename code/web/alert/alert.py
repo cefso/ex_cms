@@ -12,16 +12,20 @@ bp = Blueprint('alert', __name__, url_prefix='/alert')
 @siwa.doc(form=AliyunAlertSchema, tags=["alert"])
 def post_alert(form: AliyunAlertSchema):
     headers = request.headers
-    print(headers)
-    print(request.data)
-    print(request.body)
-    print(request.json)
     data = AliyunAlert(**form.dict())
     current_app.logger.debug('请求的headers: {}'.format(headers))
     db.session.add(data)
     db.session.commit()
     current_app.logger.debug('接收到的内容: {}，插入到数据库'.format(data.__dict__))
     return {"message": "success"}
+
+@bp.route('/slack', methods=['POST'])
+def slack_post():
+    print(request.headers)
+    print(request.body)
+    print(request.json)
+    return {"message": "success"}
+
 
 
 @bp.route('/list', methods=['GET'])
