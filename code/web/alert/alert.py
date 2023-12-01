@@ -12,6 +12,10 @@ bp = Blueprint('alert', __name__, url_prefix='/alert')
 @siwa.doc(form=AliyunAlertSchema, tags=["alert"])
 def post_alert(form: AliyunAlertSchema):
     headers = request.headers
+    print(headers)
+    print(request.data)
+    print(request.body)
+    print(request.json)
     data = AliyunAlert(**form.dict())
     current_app.logger.debug('请求的headers: {}'.format(headers))
     db.session.add(data)
