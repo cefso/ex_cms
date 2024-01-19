@@ -3,13 +3,13 @@ import json
 from alibabacloud_cms20190101 import models as cms_20190101_models
 from flask import current_app
 
-from web.cms.utils.cms_connect import AliyunClient
+from web.cms.utils.aliyun_connect import AliyunClient
 
 
 class AliyunCMS:
     def __init__(self, access_key_id, access_key_secret, metric, endpoint='metrics.cn-hangzhou.aliyuncs.com'):
         """创建连接"""
-        self.cms_client = AliyunClient(access_key_id, access_key_secret, endpoint).create_client()
+        self.aliyun_client = AliyunClient(access_key_id, access_key_secret, endpoint).create_client()
         self.metric = metric
         current_app.logger.info('cms client已经创建')
 
@@ -25,7 +25,7 @@ class AliyunCMS:
         requests.metric_name = self.metric
         current_app.logger.info('请求阿里云cms api获取监控指标')
         try:
-            response = self.cms_client.describe_metric_top(requests)
+            response = self.aliyun_client.describe_metric_top(requests)
         except Exception as e:
             current_app.logger.error('请求阿里云失败')
             current_app.logger.error(e)

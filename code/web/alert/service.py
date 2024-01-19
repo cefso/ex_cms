@@ -1,8 +1,8 @@
 from sqlalchemy.orm import aliased
 
 from web import db
-from .models import AliyunAlert
 from web.user.service import get_user_id
+from .models import AliyunAlert
 
 
 # 获取告警列表orm

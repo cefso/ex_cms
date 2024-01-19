@@ -1,4 +1,4 @@
-from web.cms.utils.aliyun_cms import AliyunCMS
+from web.cms.utils.cms.aliyun_cms import AliyunCMS
 
 
 class DiskCheck(AliyunCMS):

@@ -1,6 +1,6 @@
 from flask import current_app
 
-from web.cms.utils.cms_check import DiskCheck, MemoryCheck, CPUCheck, Load5Check
+from web.cms.utils.cms.cms_check import DiskCheck, MemoryCheck, CPUCheck, Load5Check
 
 cpu_value = 90
 load5_value = 10

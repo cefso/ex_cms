@@ -1,4 +1,5 @@
 from flask import Blueprint, request, current_app
+
 from web import siwa
 
 bp = Blueprint('health', __name__, url_prefix='/health')

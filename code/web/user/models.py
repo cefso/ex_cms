@@ -32,4 +32,3 @@ class UsersSchema(PageSchema):
 
     class Config:
         orm_mode = False
-
