@@ -29,7 +29,7 @@ def get_alert_list(user_name=None, page=1, page_size=10):
     alert_list = []
     for alert in alert_pagination.items:
         alert_list.append(alert.to_json())
-    return alert_pagination, alert_list
+    return alert_list
     # return {'page': alert_pagination.page, 'page_size': alert_pagination.per_page, 'total': alert_pagination.total,
     #         'alerts': alert_list}
 
