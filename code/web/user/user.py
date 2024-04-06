@@ -1,4 +1,3 @@
-
 from flask import Blueprint, request, current_app
 
 from web import siwa, db

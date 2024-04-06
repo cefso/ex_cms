@@ -20,8 +20,15 @@ def post_alert(form: AliyunAlertSchema):
     return {"message": "success"}
 
 
+# @bp.route('/slack', methods=['POST'])
+# def slack_post():
+#     print(request.headers)
+#     print(request.json)
+#     return {"message": "success"}
+
+
 @bp.route('/list', methods=['GET'])
 @siwa.doc(query=QuerySchema, resp=AlertsSchema, tags=["alert"])
-def list_user(query: QuerySchema):
-    user_list = get_alert_list(page=query.page, page_size=query.size)
-    return user_list
+def list_alert(query: QuerySchema):
+    alert_list = get_alert_list(page=query.page, page_size=query.size)
+    return alert_list

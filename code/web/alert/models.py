@@ -33,11 +33,11 @@ class AliyunAlert(db.Model):
     timestamp = db.Column(db.String(255))
 
     def to_json(self):
-        dict = self.__dict__
-        if "_sa_instance_state" in dict:
-            del dict["_sa_instance_state"]
-            del dict["id"]
-            return dict
+        self_dict = self.__dict__
+        if "_sa_instance_state" in self_dict:
+            del self_dict["_sa_instance_state"]
+            del self_dict["id"]
+            return self_dict
 
 
 class AliyunAlertSchema(BaseModel):
@@ -47,14 +47,14 @@ class AliyunAlertSchema(BaseModel):
     metricName: str
     instanceName: str
     signature: str
-    transId: str
+    transId: str = None
     groupId: str
     regionName: str
     productGroupName: str
     metricProject: str
     userId: str
     curValue: str
-    unit: str
+    unit: str = None
     alertName: str
     regionId: str
     namespace: str
